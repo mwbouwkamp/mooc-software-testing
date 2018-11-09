@@ -1,5 +1,7 @@
 package tudelft.roman;
 
+import com.sun.org.apache.xml.internal.utils.Hashtree2Node;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
@@ -8,15 +10,24 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MyRomanNumeralTest {
 
+    private MyRomanNumeral myRomanNumeral;
+    private HashMap<String, Integer> resultsMap;
+
+    @BeforeEach
+    public void initialize() {
+        myRomanNumeral = new MyRomanNumeral();
+        resultsMap = new HashMap<>();
+
+    }
+
     @Test void testEmptyString() {
         int expected = 0;
-        int result = new MyRomanNumeral().convert("");
+        int result = myRomanNumeral.convert("");
         assertEquals(expected, result);
 
     }
     @Test
     public void testSingleNumbers() {
-        HashMap<String, Integer> resultsMap = new HashMap<>();
         resultsMap.put("I", 1);
         resultsMap.put("V", 5);
         resultsMap.put("X", 10);
@@ -27,14 +38,13 @@ class MyRomanNumeralTest {
 
         for (String key: resultsMap.keySet()) {
             int expected = resultsMap.get(key);
-            int result = new MyRomanNumeral().convert(key);
+            int result = myRomanNumeral.convert(key);
             assertEquals(expected, result);
         }
     }
 
     @Test
     public void testSingleDoubleNumber() {
-        HashMap<String, Integer> resultsMap = new HashMap<>();
         resultsMap.put("IV", 4);
         resultsMap.put("XL", 40);
         resultsMap.put("CD", 400);
@@ -44,14 +54,13 @@ class MyRomanNumeralTest {
 
         for (String key: resultsMap.keySet()) {
             int expected = resultsMap.get(key);
-            int result = new MyRomanNumeral().convert(key);
+            int result = myRomanNumeral.convert(key);
             assertEquals(expected, result);
         }
     }
 
     @Test
     public void testMultipleSingleNumbers() {
-        HashMap<String, Integer> resultsMap = new HashMap<>();
         resultsMap.put("II", 2);
         resultsMap.put("VI", 6);
         resultsMap.put("XX", 20);
@@ -62,14 +71,13 @@ class MyRomanNumeralTest {
 
         for (String key: resultsMap.keySet()) {
             int expected = resultsMap.get(key);
-            int result = new MyRomanNumeral().convert(key);
+            int result = myRomanNumeral.convert(key);
             assertEquals(expected, result);
         }
     }
 
     @Test
     public void testSingleNumbersWithDoubleNumbers() {
-        HashMap<String, Integer> resultsMap = new HashMap<>();
         resultsMap.put("XIV", 14);
         resultsMap.put("CXL", 140);
         resultsMap.put("CDX", 410);
@@ -79,7 +87,7 @@ class MyRomanNumeralTest {
 
         for (String key: resultsMap.keySet()) {
             int expected = resultsMap.get(key);
-            int result = new MyRomanNumeral().convert(key);
+            int result = myRomanNumeral.convert(key);
             assertEquals(expected, result);
         }
     }
