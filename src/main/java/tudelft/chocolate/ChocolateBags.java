@@ -7,9 +7,11 @@ public class ChocolateBags {
         int bigBoxesWeCanUse = maxBigBoxes < big ? maxBigBoxes : big;
         total -= (bigBoxesWeCanUse * 5);
 
-        if(small < total)
-            return -1;
-        return total;
+//        if(small < total)
+//            return -1;
+//        return total;
+//
+        return small < total ? -1 : total;
 
     }
 
