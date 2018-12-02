@@ -5,9 +5,9 @@ import java.util.List;
 
 public class InvoiceFilter {
 
-    public List<Invoice> filter() {
+    public List<Invoice> filter(InvoiceDao dao) {
 
-        InvoiceDao invoiceDao = new InvoiceDao();
+        InvoiceDao invoiceDao = dao;
         List<Invoice> allInvoices = invoiceDao.all();
 
         List<Invoice> filtered = new ArrayList<>();
